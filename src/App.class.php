@@ -24,23 +24,21 @@ class App {
         
         $uri = $_SERVER['REQUEST_URI'];
 
-        foreach($this->routes as $route) {
-            if (is_object($route)) {
-                if ($uri == $route->base_url) {
-                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                        echo $route->post();
-                    } else {
-                        echo $route->get();
-                    }
+        foreach ($this->routes as $route) {
+            if (!isset($route['type'])) { continue; }
 
-                    break;
-                }
-            } else if (is_array($route)) {
-                if (isset($route['path']) && isset($route['func'])) {
-                    if ($uri == $route['path']) {
-                        echo $route['func']();
-                    }
-                }
+            switch ($route['type']) {
+                case 'blueprint':
+                    if ($route['src']->base_url != $uri) { break; }
+
+                    $route['src']->init();
+                    echo $route['src']->route();
+                break;
+                case 'function':
+                    if ($route['path'] != $uri) { break; }
+
+                    echo $route['func']();
+                break;
             }
         }
     }
@@ -50,12 +48,11 @@ class App {
      *
      * @param Blueprint $blueprint
      */
-    public function register_blueprint($blueprint) {
-        if (!class_exists($blueprint)) {
-            throw new Exception("Class: $blueprint does not exist.");
-        }
-
-        $this->routes[] = new $blueprint();
+    public function register_blueprint($blueprint_obj) {
+        $this->routes[] = [
+            'type' => 'blueprint',
+            'src' => $blueprint_obj
+        ];
     }
 
     /**
@@ -66,8 +63,9 @@ class App {
      */
     public function route($path, $func) {
         $this->routes[] = [
+            'type' => 'function',
             'path' => $path,
             'func' => $func
-        ];
+        ]; 
     }
 }

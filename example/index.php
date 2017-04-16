@@ -2,28 +2,19 @@
 
 require_once '../src/App.class.php';
 require_once '../src/Blueprint.class.php';
+require_once 'IndexBP.class.php';
+require_once 'FruitsBP.class.php';
 
-
-class Index extends Blueprint {
-    function __construct() {
-        $this->base_url = '/';
-    }
-    
-    function get() {
-        return "This was a get request!";
-    }
-
-    function post() {
-        return "This was a post request!";
-    }
-}
-
+/* Creating the app */
 $app = new App();
 
-$app->register_blueprint("Index");
+/* Blueprints */
+$index_bp = new IndexBP();
+$fruits_bp = new FruitsBP();
 
-$app->route("/test", function(){
-    return "Test!";
-});
+/* Registering our blueprints */
+$app->register_blueprint($index_bp);
+$app->register_blueprint($fruits_bp);
 
+/* Running our app */
 $app->run(true);
