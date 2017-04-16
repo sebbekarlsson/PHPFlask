@@ -14,7 +14,7 @@
             var $fruits;
             
             function __construct() {
-                $this->base_url = '/fruits';
+                $this->route('/fruits', 'main');
             }
 
             function init() {
@@ -27,7 +27,7 @@
                 ];
             }
 
-            function route() {
+            function main() {
                 return json_encode($this->fruits);
             }
         }
