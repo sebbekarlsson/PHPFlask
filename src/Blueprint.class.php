@@ -1,11 +1,7 @@
 <?php
 
-abstract class Blueprint {
-    var $base_url;
-
+abstract class Blueprint extends HTTPHandler {
     public function init() {
         /* silence */
     }
-
-    public abstract function route();
 }

@@ -3,7 +3,7 @@
 /**
  * The routing application
  */
-class App {
+class App extends HTTPHandler {
     var $routes;
 
     function __construct() {
@@ -21,25 +21,40 @@ class App {
             error_reporting(E_ALL);
             ini_set('display_errors', 1);
         }
-        
+
         $uri = $_SERVER['REQUEST_URI'];
 
         foreach ($this->routes as $route) {
             if (!isset($route['type'])) { continue; }
 
             switch ($route['type']) {
-                case 'blueprint':
-                    if ($route['src']->base_url != $uri) { break; }
+            case 'blueprint':
+                foreach($route['src']->get_routes() as $b_route) {
+                    $obj = $route['src'];
 
-                    $route['src']->init();
-                    echo $route['src']->route();
-                break;
-                case 'function':
-                    if ($route['path'] != $uri) { break; }
+                    if ($b_route['path'] == $uri) {
+                        $obj->init();
 
-                    echo $route['func']();
+                        echo $obj->$b_route['func']();
+
+                        return;
+                    }
+                }
+
                 break;
+            case 'function':
+                if ($route['path'] != $uri) { break; }
+
+                echo $route['func']();
+
+                return;
             }
+        }
+
+        if (defined('TEMPLATE_404')) {
+            include(TEMPLATE_404);
+        } else {
+            echo render_response(404, '404 not found');
         }
     }
 
@@ -53,19 +68,5 @@ class App {
             'type' => 'blueprint',
             'src' => $blueprint_obj
         ];
-    }
-
-    /**
-     * Registers a route.
-     *
-     * @param String $path
-     * @param function $func
-     */
-    public function route($path, $func) {
-        $this->routes[] = [
-            'type' => 'function',
-            'path' => $path,
-            'func' => $func
-        ]; 
     }
 }

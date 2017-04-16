@@ -21,3 +21,19 @@ function render_template($template_path, $args=[]) {
 
     return $twig->render($template_path, $args);
 }
+
+/**
+ * Render response with HTTP code
+ *
+ * @param int $code
+ * @param String message
+ *
+ * @return String
+ */
+function render_response($code, $message) {
+    http_response_code($code);
+    
+    return "<!DOCTYPE html><html><body>$message</body></html>";
+    
+    die();
+}

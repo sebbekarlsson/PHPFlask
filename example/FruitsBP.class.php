@@ -2,12 +2,12 @@
 
 class FruitsBP extends Blueprint {
     var $fruits;
-    
-    function __construct() {
-        $this->base_url = '/fruits';
+
+    public function __construct() {
+        $this->route('/fruits', 'main');
     }
 
-    function init() {
+    public function init() {
         $this->fruits = [
             'apple',
             'banana',
@@ -17,7 +17,7 @@ class FruitsBP extends Blueprint {
         ];
     }
 
-    function route() {
+    function main() {
         return json_encode($this->fruits);
     }
 }
