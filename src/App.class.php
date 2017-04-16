@@ -4,9 +4,10 @@
  * The routing application
  */
 class App {
-    var $blueprints;
+    var $routes;
 
     function __construct() {
+        $this->routes = [];
     }
 
     /**
@@ -22,6 +23,20 @@ class App {
         }
         
         $uri = $_SERVER['REQUEST_URI'];
+
+        foreach($this->routes as $route) {
+            if (is_object($route)) {
+                if ($uri == $route->base_url) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        echo $route->post();
+                    } else {
+                        echo $route->get();
+                    }
+
+                    break;
+                }
+            }
+        }
     }
 
     /**
@@ -30,7 +45,11 @@ class App {
      * @param Blueprint $blueprint
      */
     public function register_blueprint($blueprint) {
+        if (!class_exists($blueprint)) {
+            throw new Exception("Class: $blueprint does not exist.");
+        }
 
+        $this->routes[] = new $blueprint();
     }
 
     /**
