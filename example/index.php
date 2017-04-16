@@ -1,7 +1,10 @@
 <?php
 
-require_once '../src/App.class.php';
-require_once '../src/Blueprint.class.php';
+/* We need to specify where to look for templates. */
+define('TEMPLATE_DIRECTORY', __DIR__  . '/templates');
+
+
+require_once '../src/index.php';
 require_once 'IndexBP.class.php';
 require_once 'FruitsBP.class.php';
 

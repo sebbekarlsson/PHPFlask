@@ -1,4 +1,6 @@
 <?php
+require_once '../src/utils.php';
+
 
 class IndexBP extends Blueprint {
     function __construct() {
@@ -6,13 +8,6 @@ class IndexBP extends Blueprint {
     }
     
     public function route() {
-        switch($_SERVER['REQUEST_METHOD']) {
-            case 'POST':
-                return 'This was a POST request!';
-            break;
-            case 'GET':
-                return 'This was a GET request!';
-            break;
-        }
+        return render_template('index.html', null);
     }
 }
