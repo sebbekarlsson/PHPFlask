@@ -22,5 +22,8 @@ $app = new App();
 
 $app->register_blueprint("Index");
 
+$app->route("/test", function(){
+    return "Test!";
+});
 
 $app->run(true);

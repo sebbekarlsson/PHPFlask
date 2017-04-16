@@ -35,6 +35,12 @@ class App {
 
                     break;
                 }
+            } else if (is_array($route)) {
+                if (isset($route['path']) && isset($route['func'])) {
+                    if ($uri == $route['path']) {
+                        echo $route['func']();
+                    }
+                }
             }
         }
     }
@@ -59,6 +65,9 @@ class App {
      * @param function $func
      */
     public function route($path, $func) {
-    
+        $this->routes[] = [
+            'path' => $path,
+            'func' => $func
+        ];
     }
 }
