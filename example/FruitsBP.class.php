@@ -20,6 +20,8 @@ class FruitsBP extends Blueprint {
     }
 
     function main() {
+        header('Content-Type: application/json');
+
         return json_encode($this->fruits);
     }
 }
