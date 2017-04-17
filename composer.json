@@ -1,4 +1,5 @@
 {
+    "name": "PHPFlask",
     "require": {
         "twig/twig": "~1.33"
     }
