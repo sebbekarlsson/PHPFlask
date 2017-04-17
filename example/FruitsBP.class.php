@@ -9,6 +9,7 @@ class FruitsBP extends Blueprint {
         $this->base_url = '/fruits';
 
         $this->route('/', 'main');
+        $this->route('/apple', 'apple');
     }
 
     public function init() {
@@ -25,5 +26,9 @@ class FruitsBP extends Blueprint {
         header('Content-Type: application/json');
 
         return json_encode($this->fruits);
+    }
+
+    function apple() {
+        return json_encode(['color' => 'red']);
     }
 }
