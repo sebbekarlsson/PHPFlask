@@ -1,5 +1,5 @@
 {
-    "name": "PHPFlask",
+    "name": "sebbekarlsson/PHPFlask",
     "require": {
         "twig/twig": "~1.33"
     }
