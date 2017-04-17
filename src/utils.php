@@ -1,7 +1,10 @@
 <?php
 
+$twig_env = [];
+
+/* Initializing twig */
 $loader = new Twig_Loader_Filesystem(TEMPLATE_DIRECTORY);
-$twig = new Twig_Environment($loader, []);
+$twig = new Twig_Environment($loader, $twig_env);
 
 /**
  * Render a twig template.
@@ -36,4 +39,15 @@ function render_response($code, $message) {
     return "<!DOCTYPE html><html><body>$message</body></html>";
     
     die();
+}
+
+/**
+ * Used to check if HTTPS
+ *
+ * @return bool
+ */
+function isSecure() {
+  return
+    (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+    || $_SERVER['SERVER_PORT'] == 443;
 }
