@@ -9,6 +9,19 @@
 > The goal of this project is to be able to write
 > flask-like applications in PHP.
 
+## Installation
+> Clone down the repository inside your project
+> (preferably as a submodule)
+
+> And then:
+
+        cd PHPFlask/
+        composer instsall
+
+> And then in your project:
+
+        require_once('PHPFlask/src/index.php');
+
 ## Blueprint example:
 
         class FruitsBP extends Blueprint {
@@ -51,5 +64,4 @@
                 'orange'
             ]); 
         });
-
 
