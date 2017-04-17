@@ -51,8 +51,8 @@ class Flask extends HTTPHandler {
             }
         }
 
-        if (defined('TEMPLATE_404')) {
-            include(TEMPLATE_404);
+        if (defined('TEMPLATE_404') && defined('TEMPLATE_DIRECTORY')) {
+            echo render_template(TEMPLATE_404);
         } else {
             echo render_response(404, '404 not found');
         }

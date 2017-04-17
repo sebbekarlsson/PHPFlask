@@ -2,6 +2,7 @@
 
 /* We need to specify where to look for templates. */
 define('TEMPLATE_DIRECTORY', __DIR__  . '/templates');
+define('TEMPLATE_404', '404.html');
 
 
 require_once '../src/index.php';
