@@ -61,7 +61,7 @@ class Flask extends HTTPHandler {
     /**
      * Registers a blueprint that will be used as a route.
      *
-     * @param Blueprint $blueprint
+     * @param Blueprint $blueprint_obj
      */
     public function register_blueprint($blueprint_obj) {
         $this->routes[] = [
