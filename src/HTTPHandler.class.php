@@ -24,8 +24,7 @@ abstract class HTTPHandler {
     }
 
     public function get_routes() {
-        if (empty($this->routes)) { return []; }
-
-        return $this->routes;
+        return !empty($this->routes && is_array($this->routes)) ? 
+            $this->routes : [];
     }
 }
