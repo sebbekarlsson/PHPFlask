@@ -3,6 +3,7 @@
 ## Supports:
 * Blueprints
 * Function routes
+* Jinja-like templating (Using Twig)
 
 ## About
 > The goal of this project is to be able to write
