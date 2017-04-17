@@ -3,7 +3,7 @@
 /**
  * The routing application
  */
-class App extends HTTPHandler {
+class Flask extends HTTPHandler {
     var $routes;
 
     function __construct() {

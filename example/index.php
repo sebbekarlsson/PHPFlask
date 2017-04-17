@@ -9,7 +9,7 @@ require_once 'IndexBP.class.php';
 require_once 'FruitsBP.class.php';
 
 /* Creating the app */
-$app = new App();
+$app = new Flask();
 
 /* Blueprints */
 $index_bp = new IndexBP();
