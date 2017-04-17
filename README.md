@@ -20,7 +20,7 @@
 > And then:
 
         cd PHPFlask/
-        composer instsall
+        composer install
 
 > And then in your project:
 
