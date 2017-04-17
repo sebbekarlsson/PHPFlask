@@ -26,6 +26,11 @@
 
         require_once('PHPFlask/src/index.php');
 
+## Installing with composer
+> You can also install using composer:
+
+        composer install sebbekarlsson/php-flask
+
 ## Blueprint example:
 
         class FruitsBP extends Blueprint {
