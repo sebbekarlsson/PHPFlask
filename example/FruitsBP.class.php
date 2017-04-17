@@ -4,7 +4,9 @@ class FruitsBP extends Blueprint {
     var $fruits;
 
     public function __construct() {
-        $this->route('/fruits', 'main');
+        $this->base_url = '/fruits';
+
+        $this->route('/', 'main');
     }
 
     public function init() {

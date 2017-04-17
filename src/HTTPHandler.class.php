@@ -11,9 +11,12 @@ abstract class HTTPHandler {
      * @param String || function $func
      */
     public function route($path, $func) {
+        $base_url = !empty($this->base_url) ? $this->base_url : '';
+        $path = $path != '/' ? $path : '';
+
         $this->routes[] = [
             'type' => 'function',
-            'path' => $path,
+            'path' => $base_url . $path,
             'func' => $func
         ]; 
     }
