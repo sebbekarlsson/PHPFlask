@@ -5,6 +5,10 @@
 * Function routes
 * Jinja-like templating (Using Twig)
 
+## Requirements:
+* PHP 5.6 and above
+* Composer
+
 ## About
 > The goal of this project is to be able to write
 > flask-like applications in PHP.
