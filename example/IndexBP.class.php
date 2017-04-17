@@ -5,6 +5,8 @@ require_once '../src/utils.php';
 class IndexBP extends Blueprint {
 
     function __construct() {
+        parent::__construct();
+
         $this->route('/', 'main');
     }
     

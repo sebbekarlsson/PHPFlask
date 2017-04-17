@@ -37,6 +37,8 @@
             var $fruits;
             
             function __construct() {
+                parent::__construct();
+
                 $this->base_url = '/fruits';
 
                 $this->route('/', 'main');

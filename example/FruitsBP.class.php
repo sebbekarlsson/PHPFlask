@@ -4,6 +4,8 @@ class FruitsBP extends Blueprint {
     var $fruits;
 
     public function __construct() {
+        parent::__construct();
+
         $this->base_url = '/fruits';
 
         $this->route('/', 'main');

@@ -7,7 +7,7 @@ class Flask extends HTTPHandler {
     var $routes;
 
     function __construct() {
-        $this->routes = [];
+        parent::__construct();
     }
 
     /**

@@ -4,6 +4,10 @@ abstract class HTTPHandler {
     var $base_url;
     var $routes;
 
+    function __construct() {
+        $this->routes = [];
+    }
+
     /**
      * Registers a route.
      *
