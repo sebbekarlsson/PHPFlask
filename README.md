@@ -14,7 +14,9 @@
             var $fruits;
             
             function __construct() {
-                $this->route('/fruits', 'main');
+                $this->base_url = '/fruits';
+
+                $this->route('/', 'main');
             }
 
             function init() {
