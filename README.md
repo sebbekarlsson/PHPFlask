@@ -31,6 +31,11 @@
 
         composer install sebbekarlsson/php-flask
 
+## Full installation guide
+> Still clueless?
+
+> [Read the full installation guide](INSTALLATION.md)
+
 ## Blueprint example:
 
         class FruitsBP extends Blueprint {
