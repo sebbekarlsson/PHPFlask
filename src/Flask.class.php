@@ -35,7 +35,7 @@ class Flask extends HTTPHandler {
                     if ($b_route['path'] == $uri) {
                         $obj->init();
 
-                        echo $obj->$b_route['func']();
+                        echo call_user_func([$obj, $b_route['func']]);
 
                         return;
                     }
